@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MVP Digital — Ana Rovina Studio</title>
+<title>brief.app — Design com inteligência</title>
+<link rel="icon" type="image/png" href="public/favicon_ars.png?v=2">
+<meta name="description" content="Plataforma de design com IA por Ana Rovina e Alfredo Rosa. Seu produto digital com excelência e resultado real. Ideias simples, soluções extraordinárias.">
+<meta property="og:title" content="brief.app — Design com inteligência">
+<meta property="og:description" content="Seu produto digital. Com resultado real. Para founders e empreendedores que têm a ideia mas precisam do produto.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brief.app/">
+<!-- Adicione a tag og:image com a URL absoluta do seu thumb social (ex: https://brief.app/og-image.jpg) -->
+
+<!-- Google Analytics (GA4) Placeholder (Substitua G-XXXXXXXXXX pelo seu ID real) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
 <style>
@@ -214,6 +230,49 @@ body {
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ═══════════════════════════════════════════════
+   SECTION: FAQ (ACCORDION PURO CSS)
+   ═══════════════════════════════════════════════ */
+.faq { background: #fff; }
+.faq-list { max-width: 640px; margin: var(--sp-10) auto 0; }
+.faq-item { border-bottom: 1px solid var(--ink-200); }
+.faq-item:first-child { border-top: 1px solid var(--ink-200); }
+
+.faq-toggle { display: none; }
+.faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--sp-5) 0;
+  font-size: 16px; font-weight: 600; color: var(--ink-900);
+  cursor: pointer; transition: color 0.2s;
+}
+.faq-question:hover { color: var(--rose-500); }
+.faq-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.faq-icon::before, .faq-icon::after {
+  content: ''; position: absolute;
+  background: var(--ink-400); transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+}
+.faq-icon::before { width: 14px; height: 2px; }
+.faq-icon::after { width: 2px; height: 14px; }
+.faq-toggle:checked + .faq-question .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+.faq-toggle:checked + .faq-question .faq-icon::before { background: var(--rose-500); }
+.faq-toggle:checked + .faq-question { color: var(--rose-500); }
+
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+  font-size: 15px; line-height: 1.6; color: var(--ink-500);
+  opacity: 0;
+}
+.faq-toggle:checked ~ .faq-answer {
+  max-height: 500px;
+  padding-bottom: var(--sp-5);
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════
    NAVIGATION
    ═══════════════════════════════════════════════ */
 nav {
@@ -375,7 +434,6 @@ nav {
   font-size: 13px; font-weight: 800;
 }
 
-.step-content {}
 .step-title { font-size: 14px; font-weight: 700; color: var(--ink-900); margin-bottom: 3px; }
 .step-body  { font-size: 13px; line-height: 1.6; color: var(--ink-500); }
 
@@ -930,7 +988,7 @@ footer {
   </g></svg></a>
   <div class="nav-actions">
     <a href="#cases" class="nav-link">Cases</a>
-    <a href="#escopo" class="nav-link">Escopo</a>
+    <a href="#escopo" class="nav-link">O que entregamos</a>
     <a href="#quem" class="nav-link">Quem somos</a>
     <a href="https://wa.me/5511911501686?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20MVP%20Digital." class="btn btn-primary btn-sm btn-pill" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.555 4.126 1.527 5.856L0 24l6.334-1.51A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.007-1.367l-.36-.213-3.72.887.928-3.617-.234-.371A9.818 9.818 0 012.182 12c0-5.413 4.405-9.818 9.818-9.818 5.413 0 9.818 4.405 9.818 9.818 0 5.413-4.405 9.818-9.818 9.818z"/></svg>
@@ -1004,7 +1062,7 @@ footer {
   <div class="container">
     <div class="reveal">
       <span class="section-label">Como funciona</span>
-      <h2 class="h2" style="margin-bottom:12px;">O processo<br>Brief.app</h2>
+      <h2 class="h2" style="margin-bottom:12px;">O processo<br>brief.app</h2>
       <p class="body" style="color:var(--ink-500);max-width:440px;">Estratégia de produto, design e IA em um processo proprietário que entrega em dias o que o mercado leva meses.</p>
     </div>
     <div class="processo-layout reveal" style="transition-delay:.1s">
@@ -1061,8 +1119,8 @@ footer {
   <div class="container">
     <div class="reveal">
       <span class="section-label">Cases reais</span>
-      <h2 class="h2" style="margin-bottom:12px;">Resultados que<br>você pode ver.</h2>
-      <p class="body" style="color:var(--ink-500);max-width:440px;">Dois projetos entregues com o processo Master Designer. Clientes reais, resultados reais.</p>
+      <h2 class="h2" style="margin-bottom:12px;">Resultados dos<br>projetos criados</h2>
+      <p class="body" style="color:var(--ink-500);max-width:440px;">Quatro projetos entregues com o processo brief.app. Clientes reais, resultados reais.</p>
     </div>
     <div class="cases-grid reveal" style="transition-delay:.1s">
 
@@ -1070,7 +1128,7 @@ footer {
       <div class="case-card">
         <div class="case-header">
           <span class="case-logo-name">Editalize</span>
-          <span class="badge badge-brand">Identidade de Marca</span>
+          <span class="badge badge-brand">Identidade da Marca com MVP</span>
         </div>
         <div class="case-body">
           <p class="case-title">Plataforma nacional de concursos públicos</p>
@@ -1110,6 +1168,44 @@ footer {
         </div>
       </div>
 
+      <!-- Elanthe -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-logo-name">Elanthe</span>
+          <span class="badge badge-brand">Identidade Visual e MVP</span>
+        </div>
+        <div class="case-body">
+          <p class="case-title">Gestão de projetos de Arquitetura e Design de Interiores</p>
+          <p class="case-desc">Sistema integrado com CRM de clientes, construção de mood boards, leitura inteligente de briefing do cliente, gestão de fornecedores, catálogos de produtos e Kanban da situação atual dos projetos.</p>
+          <p class="case-deliverables-label">Entregues</p>
+          <div class="case-chips">
+            <span class="chip">Opções de naming</span>
+            <span class="chip">Identidade visual completa</span>
+            <span class="chip">Arquitetura do MVP</span>
+          </div>
+          <div class="case-quote">"Seu projeto seguro."</div>
+        </div>
+      </div>
+
+      <!-- Fredly -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-logo-name" style="color:var(--ink-500)">Fredly</span>
+          <span class="badge badge-neutral">Identidade Visual e MVP</span>
+        </div>
+        <div class="case-body">
+          <p class="case-title">Plataforma inteligente de recrutamento</p>
+          <p class="case-desc">Transforma entrevistas em experiências mais justas, personalizadas e acolhedoras — tanto para os candidatos quanto para as empresas. É onde a inteligência artificial encontra a inteligência emocional.</p>
+          <p class="case-deliverables-label">Entregues</p>
+          <div class="case-chips">
+            <span class="chip">Naming</span>
+            <span class="chip">Identidade visual completa</span>
+            <span class="chip">MVP em código</span>
+          </div>
+          <div class="case-quote case-quote-slate">"Seu parceiro para novas perspectivas."</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1118,7 +1214,7 @@ footer {
 <section class="section escopo" id="escopo">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Escopo</span>
+      <span class="section-label">O que entregamos</span>
       <h2 class="h2" style="margin-bottom:12px;">Tudo que você<br>precisa para lançar.</h2>
     </div>
         <div class="scope-grid reveal" style="transition-delay:.1s">
@@ -1136,7 +1232,7 @@ footer {
         </div>
         <div class="scope-card">
           <div class="feature-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#E9506E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span class="feature-text">Figma handoff para o desenvolvedor</span>
+          <span class="feature-text">Produto digital</span>
         </div>
         <div class="scope-card">
           <div class="feature-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#E9506E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1188,6 +1284,67 @@ footer {
         <p class="pessoa-role" style="color:var(--ink-400);margin-top:-10px;">Engenheiro de Software Sênior</p>
         <a href="https://www.linkedin.com/in/alfredo-rosa/" target="_blank" rel="noopener noreferrer" class="linkedin-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0A66C2" style="width:16px;height:16px;flex-shrink:0;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>linkedin.com/in/alfredo-rosa</a>
         <p class="pessoa-bio">Estrategista de marca e produto com foco em posicionamento e go-to-market. Responsável pela visão de negócio, escopo e experiência do cliente em cada projeto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label" style="justify-content:center;">Dúvidas Frequentes</span>
+      <h2 class="h2" style="margin-bottom:12px;">O que você precisa saber</h2>
+    </div>
+    <div class="faq-list reveal" style="transition-delay:.1s">
+      <div class="faq-item">
+        <input type="checkbox" id="faq-1" class="faq-toggle">
+        <label for="faq-1" class="faq-question">
+          Vocês trabalham com código ou no-code?
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
+          Entregamos seu produto com código puro ou em frameworks modernos, garantindo alta performance e flexibilidade estendida. Nossas tecnologias incluem:<br><br>
+          <strong>Back-end</strong><br>
+          • PHP 8.x ou superior<br>
+          • Banco de Dados MySQL 8 ou PostgreSQL<br>
+          • API REST para integrações futuras, quando aplicável<br><br>
+          <strong>Front-end</strong><br>
+          • HTML5<br>
+          • CSS3 com metodologia responsiva e flexível<br>
+          • JavaScript ES6+<br>
+          • Frameworks modernos de interface quando necessário, como React ou Vue.js, conforme escopo
+        </div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq-2" class="faq-toggle">
+        <label for="faq-2" class="faq-question">
+          Como a IA participa do processo?
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
+          Temos nossos próprios agentes de inteligência (Cortex e Pandora) que aceleram brutalmente a definição da arquitetura (UX), do conteúdo (Copy) e a estruturação de marca inicial. O que levava semanas em agências, resolvemos em horas ou dias, e reservamos o tempo humano para o que importa: refinamento de excelência.
+        </div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq-3" class="faq-toggle">
+        <label for="faq-3" class="faq-question">
+          Tem preços e mensalidades depois do lançamento?
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
+          Não temos mensalidades. Você paga por um pacote de escopo fechado, perfeitamente sob medida para lançar sua ideia para o mundo. O código será seu e do seu time. Para descobrirmos os valores, nós alinhamos todas as necessidades com você no briefing e montamos uma proposta rápida.
+        </div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq-4" class="faq-toggle">
+        <label for="faq-4" class="faq-question">
+          Como funciona a revisão? Eu posso mudar as telas?
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
+          A etapa de "Revisão Colaborativa" acontece logo após mapearmos todas as telas desenhadas no Figma. Nós repassamos fluxo a fluxo, aplicamos os ajustes finais de conteúdo e estilo com você na hora ou em lote, e então congelamos para seguir direto ao código.
+        </div>
       </div>
     </div>
   </div>
